@@ -19,8 +19,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['DM Sans', 'DM Sans Fallback', 'system-ui', 'sans-serif'],
-				serif: ['Cormorant Garamond', 'Cormorant Garamond Fallback', 'Georgia', 'serif'],
+				sans: ['Inter', 'system-ui', 'sans-serif'],
+				serif: ['Playfair Display', 'Georgia', 'serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -66,12 +66,12 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom Japandi colors
-				sand: 'hsl(var(--sand))',
-				sage: 'hsl(var(--sage))',
-				terracotta: 'hsl(var(--terracotta))',
-				indigo: 'hsl(var(--indigo))',
-				stone: 'hsl(var(--stone))',
+				cream: 'hsl(var(--cream))',
+				teal: 'hsl(var(--teal))',
+				'teal-light': 'hsl(var(--teal-light))',
+				gold: 'hsl(var(--gold))',
+				'warm-gray': 'hsl(var(--warm-gray))',
+				deep: 'hsl(var(--deep))',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -80,25 +80,22 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
-				}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
+				},
+				'fade-up': {
+					from: { opacity: '0', transform: 'translateY(24px)' },
+					to: { opacity: '1', transform: 'translateY(0)' }
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-up': 'fade-up 0.8s ease-out forwards',
 			}
 		}
 	},

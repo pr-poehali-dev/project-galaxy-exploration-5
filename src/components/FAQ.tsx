@@ -38,80 +38,66 @@ export function FAQ() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true)
-      },
-      { threshold: 0.1 },
+      ([entry]) => { if (entry.isIntersecting) setIsVisible(true) },
+      { threshold: 0.08 },
     )
     if (sectionRef.current) observer.observe(sectionRef.current)
     return () => observer.disconnect()
   }, [])
 
   return (
-    <section ref={sectionRef} id="faq" className="py-32 lg:py-40 px-6 lg:px-12 bg-sand/50">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-12 gap-16 lg:gap-24">
-          <div className="lg:col-span-4">
-            <div className="lg:sticky lg:top-32">
-              <p
-                className={`text-xs tracking-[0.3em] uppercase text-terracotta mb-6 transition-all duration-1000 ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                }`}
+    <section ref={sectionRef} id="faq" className="py-32 lg:py-40 px-6 lg:px-16 bg-cream">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-16">
+          <p className={`text-xs tracking-[0.25em] uppercase text-teal mb-6 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+            FAQ
+          </p>
+          <h2 className={`font-serif text-4xl md:text-5xl font-light text-foreground text-balance transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+            Частые вопросы
+          </h2>
+        </div>
+
+        <div className="space-y-3">
+          {faqs.map((faq, index) => (
+            <div
+              key={index}
+              className={`bg-white rounded-2xl overflow-hidden card-float transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              style={{ transitionDelay: `${300 + index * 80}ms` }}
+            >
+              <button
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                className="w-full flex items-center justify-between gap-6 px-8 py-6 text-left group"
               >
-                FAQ
-              </p>
-              <h2
-                className={`font-serif text-4xl md:text-5xl font-light text-foreground mb-6 text-balance transition-all duration-1000 delay-200 ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
-              >
-                Частые
-                <span className="italic"> вопросы</span>
-              </h2>
-              <div
-                className={`mt-10 transition-all duration-1000 delay-400 ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
-              >
-                <a
-                  href="#contact"
-                  className="group inline-flex items-center gap-3 px-8 py-4 bg-sage text-primary-foreground text-sm tracking-widest uppercase hover:bg-sage/90 transition-all duration-500"
+                <span className="font-serif text-lg md:text-xl text-foreground font-light group-hover:text-teal transition-colors duration-300">
+                  {faq.question}
+                </span>
+                <span
+                  className="shrink-0 w-8 h-8 rounded-full border border-border flex items-center justify-center text-teal text-lg transition-all duration-300 group-hover:border-teal group-hover:bg-teal/5"
+                  style={{ transform: openIndex === index ? "rotate(45deg)" : "rotate(0deg)" }}
                 >
-                  Занять место бесплатно
-                </a>
+                  +
+                </span>
+              </button>
+              <div
+                className="overflow-hidden transition-all duration-400 ease-out"
+                style={{ maxHeight: openIndex === index ? "200px" : "0px" }}
+              >
+                <p className="px-8 pb-6 text-muted-foreground font-light text-sm leading-relaxed">{faq.answer}</p>
               </div>
             </div>
-          </div>
+          ))}
+        </div>
 
-          <div className="lg:col-span-8">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className={`border-t border-border last:border-b transition-all duration-700 ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
-                style={{ transitionDelay: `${300 + index * 100}ms` }}
-              >
-                <button
-                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="w-full flex items-start justify-between gap-6 py-8 text-left group"
-                >
-                  <span className="font-serif text-xl md:text-2xl text-foreground group-hover:text-sage transition-colors duration-300">
-                    {faq.question}
-                  </span>
-                  <span className="text-sage text-2xl shrink-0 mt-0.5 transition-transform duration-300" style={{ transform: openIndex === index ? "rotate(45deg)" : "rotate(0deg)" }}>
-                    +
-                  </span>
-                </button>
-                <div
-                  className="overflow-hidden transition-all duration-500 ease-out"
-                  style={{ maxHeight: openIndex === index ? "300px" : "0px" }}
-                >
-                  <p className="text-muted-foreground leading-relaxed pb-8 max-w-2xl">{faq.answer}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className={`text-center mt-14 transition-all duration-700 delay-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <a
+            href="#contact"
+            className="group inline-flex items-center gap-3 px-10 py-4 rounded-full bg-teal text-white text-sm tracking-[0.1em] uppercase font-light hover:bg-teal/90 hover:shadow-lg hover:shadow-teal/20 hover:-translate-y-0.5 transition-all duration-300"
+          >
+            Занять место бесплатно
+            <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>
