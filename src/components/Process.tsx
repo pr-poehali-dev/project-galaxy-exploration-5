@@ -1,29 +1,29 @@
 import { useEffect, useRef, useState } from "react"
 
-const steps = [
+const audience = [
   {
     number: "01",
-    title: "Слушаем",
+    title: "Хотите работать из дома",
     description:
-      "Мы начинаем с присутствия. Понимаем не только ваше пространство, но и то, как вы в нём живёте — ваши ритмы, потребности, стремления.",
+      "Вам нужна профессия, которую можно встроить в свою жизнь, а не жизнь подстроить под чужой график. На вебинаре вы поймёте, как выглядит реальный старт в профессии и с каких шагов можно начать уже сейчас.",
   },
   {
     number: "02",
-    title: "Видим",
+    title: "Хотите сменить работу, но боитесь ошибиться",
     description:
-      "Вместе исследуем возможности. Мудборды, образцы материалов и пространственные концепции рождаются из нашего диалога.",
+      "Прежняя работа больше не радует, но уходить в неизвестность страшно. На вебинаре вы поймёте, подходит ли вам профессия турагента и как входить в неё без розовых очков.",
   },
   {
     number: "03",
-    title: "Создаём",
+    title: "Хотите превратить интерес к путешествиям в доход",
     description:
-      "С намерением и заботой воплощаем видение в жизнь. Каждая деталь продумана, каждый элемент осмыслен.",
+      "Вы давно смотрите в сторону туризма, но пока это просто симпатия. На вебинаре вы поймёте, как устроена профессия турагента и как сделать первые шаги без догадок и хаотичных действий.",
   },
   {
     number: "04",
-    title: "Живём",
+    title: "Ищете дополнительный доход без резких перемен",
     description:
-      "Пространство готово, но путешествие продолжается. Мы следим, чтобы ваш дом развивался вместе с вами.",
+      "Вы не готовы прямо сейчас всё бросить, но хотите попробовать новое направление. На вебинаре вы поймёте, как входить в профессию спокойно, без лишнего давления.",
   },
 ]
 
@@ -52,7 +52,6 @@ export function Process() {
     <section ref={sectionRef} id="process" className="py-32 lg:py-40 px-6 lg:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-12 gap-16 lg:gap-24">
-          {/* Left Column - Sticky Header */}
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-32">
               <p
@@ -60,33 +59,39 @@ export function Process() {
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                 }`}
               >
-                Наш процесс
+                Для кого
               </p>
               <h2
                 className={`font-serif text-4xl md:text-5xl font-light text-foreground mb-6 text-balance transition-all duration-1000 delay-200 ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 }`}
               >
-                Путь
-                <span className="italic"> осознанности</span>
+                Узнайте себя
+                <span className="italic"> в одном из</span>
               </h2>
               <p
-                className={`text-muted-foreground leading-relaxed transition-all duration-1000 delay-300 ${
+                className={`text-muted-foreground leading-relaxed mb-10 transition-all duration-1000 delay-300 ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 }`}
               >
-                Настоящие пространства не создаются в спешке. Они раскрываются через вдумчивый процесс,
-                уважающий и архитектуру, и людей, которые будут здесь жить.
+                После вебинара у вас будет понимание, подходит ли вам профессия, ясная картина входа с нуля и уверенность, чтобы перейти от интереса к действию.
               </p>
+              <a
+                href="#contact"
+                className={`inline-flex items-center gap-3 px-8 py-4 bg-sage text-primary-foreground text-sm tracking-widest uppercase hover:bg-sage/90 transition-all duration-500 ${
+                  isVisible ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                Иду на вебинар
+              </a>
             </div>
           </div>
 
-          {/* Right Column - Steps */}
           <div className="lg:col-span-8">
             <div className="space-y-0">
-              {steps.map((step, index) => (
+              {audience.map((item, index) => (
                 <div
-                  key={step.number}
+                  key={item.number}
                   className={`group py-10 lg:py-14 border-t border-border last:border-b transition-all duration-1000 ${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                   }`}
@@ -94,11 +99,11 @@ export function Process() {
                 >
                   <div className="flex gap-8 lg:gap-12">
                     <span className="font-serif text-4xl lg:text-5xl text-stone/50 group-hover:text-sage transition-colors duration-500">
-                      {step.number}
+                      {item.number}
                     </span>
                     <div>
-                      <h3 className="font-serif text-2xl md:text-3xl text-foreground mb-4">{step.title}</h3>
-                      <p className="text-muted-foreground leading-relaxed max-w-xl">{step.description}</p>
+                      <h3 className="font-serif text-2xl md:text-3xl text-foreground mb-4">{item.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed max-w-xl">{item.description}</p>
                     </div>
                   </div>
                 </div>

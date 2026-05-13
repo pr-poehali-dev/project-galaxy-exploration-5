@@ -9,39 +9,45 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 lg:px-12 pt-20">
-      {/* Subtle background texture */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-sand/30 to-background" />
 
       <div className="relative z-10 max-w-5xl mx-auto text-center">
-        {/* Overline */}
         <p
           className={`text-xs tracking-[0.3em] uppercase text-muted-foreground mb-8 transition-all duration-1000 delay-300 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          Онлайн-вебинар для турагентов
+          Бесплатный онлайн-вебинар
         </p>
 
-        {/* Main Headline */}
         <h1
-          className={`font-serif text-5xl md:text-7xl lg:text-8xl font-light leading-[1.1] tracking-tight text-foreground mb-8 text-balance transition-all duration-1000 delay-500 ${
+          className={`font-serif text-4xl md:text-6xl lg:text-7xl font-light leading-[1.1] tracking-tight text-foreground mb-8 text-balance transition-all duration-1000 delay-500 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          Продавай туры,
-          <span className="block text-sage">которые влюбляют</span>
+          Профессия турагента с нуля:
+          <span className="block text-sage">как начать и дойти до первых продаж</span>
         </h1>
 
-        {/* Subheadline */}
         <p
-          className={`text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-12 transition-all duration-1000 delay-700 ${
+          className={`text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8 transition-all duration-1000 delay-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          Практический вебинар для турагентов, которые хотят увеличить продажи, выстроить доверие с клиентами и работать с удовольствием.
+          Бесплатный вебинар для тех, кто хочет освоить новую профессию и выйти на доход в понятной системе.
         </p>
 
-        {/* CTA */}
+        <ul
+          className={`text-base text-muted-foreground max-w-xl mx-auto mb-12 space-y-2 text-left inline-block transition-all duration-1000 delay-800 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <li className="flex items-start gap-2"><span className="text-sage mt-1">—</span>поймёте, как устроена работа турагента</li>
+          <li className="flex items-start gap-2"><span className="text-sage mt-1">—</span>узнаете, как стартовать без опыта в туризме</li>
+          <li className="flex items-start gap-2"><span className="text-sage mt-1">—</span>разберётесь, как не бояться клиентов и продаж</li>
+          <li className="flex items-start gap-2"><span className="text-sage mt-1">—</span>увидите, как прийти к первым заявкам и первым деньгам</li>
+        </ul>
+
         <div
           className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-1000 delay-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -51,7 +57,7 @@ export function Hero() {
             href="#contact"
             className="group inline-flex items-center gap-3 px-8 py-4 bg-sage text-primary-foreground text-sm tracking-widest uppercase hover:bg-sage/90 transition-all duration-500"
           >
-            Зарегистрироваться
+            Иду на вебинар
             <svg
               className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1"
               fill="none"
@@ -70,7 +76,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
         <div className="w-px h-16 bg-gradient-to-b from-transparent via-stone to-transparent animate-pulse" />
       </div>
